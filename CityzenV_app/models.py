@@ -37,6 +37,7 @@ class A1(models.Model):
     id = models.AutoField(primary_key=True)
     admin = models.OneToOneField(CustomUser, on_delete=models.CASCADE, null=True)
     home_town = models.TextField()
+    objects = models.Manager()
 
 
 class A2(models.Model):
@@ -44,6 +45,7 @@ class A2(models.Model):
     admin = models.OneToOneField(CustomUser, on_delete=models.CASCADE, null=True)
     a1_control_id = models.ForeignKey(A1, on_delete=models.DO_NOTHING)
     home_town = models.TextField()
+    objects = models.Manager()
 
 
 class A3(models.Model):
@@ -51,6 +53,7 @@ class A3(models.Model):
     admin = models.OneToOneField(CustomUser, on_delete=models.CASCADE, null=True)
     a2_control_id = models.ForeignKey(A2, on_delete=models.DO_NOTHING)
     home_town = models.TextField()
+    objects = models.Manager()
 
 
 class B1(models.Model):
@@ -58,6 +61,7 @@ class B1(models.Model):
     admin = models.OneToOneField(CustomUser, on_delete=models.CASCADE, null=True)
     a3_control_id = models.ForeignKey(A3, on_delete=models.DO_NOTHING)
     home_town = models.TextField()
+    objects = models.Manager()
 
 
 class B2(models.Model):
@@ -65,6 +69,7 @@ class B2(models.Model):
     admin = models.OneToOneField(CustomUser, on_delete=models.CASCADE, null=True)
     b1_control_id = models.ForeignKey(B1, on_delete=models.DO_NOTHING)
     home_town = models.TextField()
+    objects = models.Manager()
 
 
 @receiver(post_save, sender=CustomUser)
@@ -89,12 +94,12 @@ def save_user_profile(sender, instance, **kwargs):
     if instance.user_type == 1:
         instance.admin.save()
     if instance.user_type == 2:
-        instance.a1s.save()
+        instance.a1.save()
     if instance.user_type == 3:
-        instance.a2s.save()
+        instance.a2.save()
     if instance.user_type == 4:
-        instance.a3s.save()
+        instance.a3.save()
     if instance.user_type == 5:
-        instance.b1s.save()
+        instance.b1.save()
     if instance.user_type == 6:
-        instance.b2s.save()
+        instance.b2.save()

@@ -15,23 +15,22 @@ def add_a1(request):
 
 def add_a1_save(request):
     if request.method != "POST":
-        return HttpResponse("<h2>Phuơng thức không hợp lệ</h2>")
+        return HttpResponse("Phương thức không hợp lệ")
     else:
+        username = request.POST.get("username")
+        password = request.POST.get("password")
         first_name = request.POST.get("first_name")
         last_name = request.POST.get("last_name")
-        username = request.POST.get("username")
         email = request.POST.get("email")
-        password = request.POST.get("password")
         home_town = request.POST.get("home_town")
-
         try:
-            user = CustomUser.objects.create_user(username=username, password=password, first_name=first_name,
-                                                  last_name=last_name, email=email, user_type=2)
-            user.a1s.home_town = home_town
+            user = CustomUser.objects.create_user(username=username, password=password, first_name=first_name, last_name=last_name, email=email, user_type=2)
+            user.a1.home_town = home_town
             user.save()
-            messages.success(request, "Thêm thành công")
+            messages.success(request, "Thêm A1 thành công")
+            return HttpResponseRedirect("/add_a1")
+        except:
+            messages.error(request, "Thêm A1 thất bại")
             return HttpResponseRedirect("/add_a1")
 
-        except:
-            messages.error(request, "Thêm thất bại, vui lòng thử lại sau")
-            return HttpResponseRedirect("/add_a1")
+
