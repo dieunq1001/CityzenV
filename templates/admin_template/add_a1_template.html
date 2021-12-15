@@ -1,0 +1,70 @@
+{% extends 'admin_template/admin_base_template.html' %}
+{% block main_content %}
+    <section class="content">
+        <div class="container-fluid">
+            <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- left column -->
+          <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Nhập thong tin A1</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form role="form" action="/add_a1_save" method="post">
+                  {% csrf_token %}
+                <div class="card-body">
+                  <div class="form-group">
+                    <label>Tên đăng nhập</label>
+                    <input type="number" class="form-control" name="username" placeholder="Nhập tên đăng nhập" min="1" max="63">
+                  </div>
+                  <div class="form-group">
+                    <label>Mật khẩu</label>
+                    <input type="password" class="form-control" name="password" placeholder="Nhập mật khẩu">
+                  </div>
+                  <div class="form-group">
+                    <label>Họ</label>
+                    <input type="text" class="form-control" name="first_name" placeholder="Nhập họ">
+                  </div>
+                  <div class="form-group">
+                    <label>Tên</label>
+                    <input type="text" class="form-control" name="last_name" placeholder="Nhập tên">
+                  </div>
+                  <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" class="form-control" name="email" placeholder="Nhập Email">
+                  </div>
+                  <div class="form-group">
+                    <label>Quê quán</label>
+                    <input type="text" class="form-control" name="home_town" placeholder="Nhập quê quán">
+                  </div>
+                  {% if messages %}
+                   <div class="form-group">
+                    {% for message in messages %}
+                        {% if message.tags == 'error' %}
+                            <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
+                        {% endif %}
+                        {% if message.tags == 'success' %}
+                            <div class="alert alert-success" style="margin-top:10px">{{ message }}</div>
+                        {% endif %}
+                    {% endfor %}
+                    </div>
+                  {% endif %}
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Đăng ký</button>
+                </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+        </div>
+    </section>
+{% endblock main_content %}

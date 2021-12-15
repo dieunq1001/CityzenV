@@ -73,15 +73,15 @@ def create_user_profile(sender, instance, created, **kwargs):
         if instance.user_type == 1:
             Admin.objects.create(admin=instance)
         if instance.user_type == 2:
-            A1.objects.create(admin=instance, home_town="")
+            A1.objects.create(admin=instance)
         if instance.user_type == 3:
-            A2.objects.create(admin=instance, home_town="")
+            A2.objects.create(admin=instance)
         if instance.user_type == 4:
-            A3.objects.create(admin=instance, home_town="")
+            A3.objects.create(admin=instance)
         if instance.user_type == 5:
-            B1.objects.create(admin=instance, home_town="")
+            B1.objects.create(admin=instance)
         if instance.user_type == 6:
-            B2.objects.create(admin=instance, home_town="")
+            B2.objects.create(admin=instance)
 
 
 @receiver(post_save, sender=CustomUser)

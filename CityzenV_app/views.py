@@ -17,18 +17,18 @@ def DoLogin(request):
     else:
         user = authenticate(request, username=request.POST.get("username"),
                             password=request.POST.get("password"))
-        '''if user is not None:
+        if user is not None:
             login(request, user)
-            if user.userType == "1":
+            return HttpResponseRedirect("/admin_home")
+            '''if user.userType == "1":
                 return HttpResponseRedirect(reverse("adminHome"))
             elif user.userType == "2":
                 return HttpResponseRedirect(reverse("teacherHome"))
             else:
-                return HttpResponseRedirect(reverse("studentHome"))
+                return HttpResponseRedirect(reverse("studentHome"))'''
         else:
             messages.error(request, "Tài khoản/mật khẩu không chính xác")
-            return HttpResponseRedirect("/")'''
-        return HttpResponse("<h2>ok</h2>")
+            return HttpResponseRedirect("/")
 
 
 def DoLogOut(request):

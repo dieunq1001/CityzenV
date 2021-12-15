@@ -18,10 +18,16 @@ from django.urls import path
 from django.conf.urls.static import static
 
 from CityzenV import settings
-from CityzenV_app import views
+from CityzenV_app import views, admin_view
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('', views.ShowLoginPage),
     path('doLogin', views.DoLogin),
+
+    #admin
+    path('admin_home', admin_view.admin_home),
+    path('add_a1', admin_view.add_a1),
+    path('add_a1_save', admin_view.add_a1_save),
+
+
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
