@@ -34,6 +34,7 @@ urlpatterns = [
     path('a1_home', a1_view.a1_home),
     path('add_a2', a1_view.add_a2),
     path('add_a2_save', a1_view.add_a2_save),
+    path('manage_cong_dan', a1_view.manage_cong_dan),
 
     #a2
     path('a2_home', a2_view.a2_home),
