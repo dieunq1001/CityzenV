@@ -50,6 +50,8 @@ urlpatterns = [
     path('b1_home', b1_view.b1_home),
     path('add_b2', b1_view.add_b2),
     path('add_b2_save', b1_view.add_b2_save),
+    path('b1_add_cong_dan', b1_view.b1_add_cong_dan),
+    path('b1_add_cong_dan_save', b1_view.b1_add_cong_dan_save),
 
     #b2
     path('b2_home', b2_view.b2_home),
