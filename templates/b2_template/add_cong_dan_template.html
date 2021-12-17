@@ -1,0 +1,87 @@
+{% extends 'b2_template/b2_base_template.html' %}
+{% block main_content %}
+    <section class="content">
+        <div class="container-fluid">
+            <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- left column -->
+          <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Nhập thông tin công dân tại thôn/bản/tổ dân phố</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form role="form" action="/add_cong_dan_save" method="post">
+                  {% csrf_token %}
+                  <div class="form-group">
+                    <label>Họ và tên</label>
+                    <input type="text" class="form-control" name="name" placeholder="Nhập họ và tên">
+                  </div>
+                  <div class="form-group">
+                    <label>Số chứng minh nhân dân/căn cước công dân</label>
+                    <input type="number" class="form-control" name="identity_id" placeholder="Nhập CMND/CCCD" maxlength="12">
+                  </div>
+                  <div class="form-group">
+                    <label>Ngày sinh</label>
+                    <input type="date" class="form-control" name="birth_date">
+                  </div>
+                  <div class="form-group">
+                    <label>Giới tính</label>
+                    <select class="form-control" name="gender">
+                        <option>Nam</option>
+                        <option>Nữ</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Quê quán</label>
+                    <input type="text" class="form-control" name="home_town" placeholder="Nhập quê quán">
+                  </div>
+                  <div class="form-group">
+                    <label>Địa chỉ thường trú</label>
+                    <input type="text" class="form-control" name="permanent_address" placeholder="Nhập địa chỉ thường trú của công dân">
+                  </div>
+                  <div class="form-group">
+                    <label>Địa chỉ tạm trú</label>
+                    <input type="text" class="form-control" name="temporary_address" placeholder="Nhập địa chỉ tạm trú của công dân">
+                  </div>
+                  <div class="form-group">
+                    <label>Tôn giáo</label>
+                    <input type="text" class="form-control" name="religion" placeholder="Nhập tôn giáo của công dân">
+                  </div>
+                  <div class="form-group">
+                    <label>Trình độ văn hóa</label>
+                    <input type="text" class="form-control" name="educational_level" placeholder="Nhập trình độ văn hóa của công dân">
+                  </div>
+                  <div class="form-group">
+                    <label>Nghề nghiệp</label>
+                    <input type="text" class="form-control" name="job" placeholder="Nhập nghề nghiệp của công dân">
+                  </div>
+                  {% if messages %}
+                   <div class="form-group">
+                    {% for message in messages %}
+                        {% if message.tags == 'error' %}
+                            <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
+                        {% endif %}
+                        {% if message.tags == 'success' %}
+                            <div class="alert alert-success" style="margin-top:10px">{{ message }}</div>
+                        {% endif %}
+                    {% endfor %}
+                    </div>
+                  {% endif %}
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Hoàn tất</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+        </div>
+    </section>
+{% endblock main_content %}

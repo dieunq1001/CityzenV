@@ -19,13 +19,18 @@ def DoLogin(request):
                             password=request.POST.get("password"))
         if user is not None:
             login(request, user)
-            return HttpResponseRedirect("/admin_home")
-            '''if user.userType == "1":
-                return HttpResponseRedirect(reverse("adminHome"))
-            elif user.userType == "2":
-                return HttpResponseRedirect(reverse("teacherHome"))
+            if user.user_type == "1":
+                return HttpResponseRedirect("/admin_home")
+            elif user.user_type == "2":
+                return HttpResponseRedirect("/a1_home")
+            elif user.user_type == "3":
+                return HttpResponseRedirect("/a2_home")
+            elif user.user_type == "4":
+                return HttpResponseRedirect("/a3_home")
+            elif user.user_type == "5":
+                return HttpResponseRedirect("/b1_home")
             else:
-                return HttpResponseRedirect(reverse("studentHome"))'''
+                return HttpResponseRedirect("/b2_home")
         else:
             messages.error(request, "Tài khoản/mật khẩu không chính xác")
             return HttpResponseRedirect("/")

@@ -22,9 +22,9 @@ def add_a1_save(request):
         first_name = request.POST.get("first_name")
         last_name = request.POST.get("last_name")
         email = request.POST.get("email")
-        home_town = request.POST.get("home_town")
         try:
-            user = CustomUser.objects.create_user(username=username, password=password, first_name=first_name, last_name=last_name, email=email, user_type=2)
+            user = CustomUser.objects.create_user(username=username, password=password, first_name=first_name, last_name=last_name, email=email, user_type=2, is_staff=True, is_superuser=True)
+            home_town = "Toàn chi cục"
             user.a1.home_town = home_town
             user.save()
             messages.success(request, "Thêm A1 thành công")

@@ -36,39 +36,35 @@ class Admin(models.Model):
 class A1(models.Model):
     id = models.AutoField(primary_key=True)
     admin = models.OneToOneField(CustomUser, on_delete=models.CASCADE, null=True)
-    home_town = models.TextField()
+    home_town = models.TextField(unique=True)
     objects = models.Manager()
 
 
 class A2(models.Model):
     id = models.AutoField(primary_key=True)
     admin = models.OneToOneField(CustomUser, on_delete=models.CASCADE, null=True)
-    a1_control_id = models.ForeignKey(A1, on_delete=models.DO_NOTHING)
-    home_town = models.TextField()
+    home_town = models.TextField(unique=True)
     objects = models.Manager()
 
 
 class A3(models.Model):
     id = models.AutoField(primary_key=True)
     admin = models.OneToOneField(CustomUser, on_delete=models.CASCADE, null=True)
-    a2_control_id = models.ForeignKey(A2, on_delete=models.DO_NOTHING)
-    home_town = models.TextField()
+    home_town = models.TextField(unique=True)
     objects = models.Manager()
 
 
 class B1(models.Model):
     id = models.AutoField(primary_key=True)
     admin = models.OneToOneField(CustomUser, on_delete=models.CASCADE, null=True)
-    a3_control_id = models.ForeignKey(A3, on_delete=models.DO_NOTHING)
-    home_town = models.TextField()
+    home_town = models.TextField(unique=True)
     objects = models.Manager()
 
 
 class B2(models.Model):
     id = models.AutoField(primary_key=True)
     admin = models.OneToOneField(CustomUser, on_delete=models.CASCADE, null=True)
-    b1_control_id = models.ForeignKey(B1, on_delete=models.DO_NOTHING)
-    home_town = models.TextField()
+    home_town = models.TextField(unique=True)
     objects = models.Manager()
 
 
