@@ -5,29 +5,29 @@
             <section class="content">
       <div class="container-fluid">
         <div class="row">
-        <button onclick="window.print()">In tờ khai báo</button>
           <!-- left column -->
           <div class="col-md-12">
             <!-- general form elements -->
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Nhập thông tin công dân tại xã/phường</h3>
+                <h3 class="card-title">Thay đổi thông tin công dân tại xã/phường</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form role="form" action="/b1_add_cong_dan_save" method="post">
+              <form role="form" action="/b1_edit_cong_dan_save" method="post">
                   {% csrf_token %}
                   <div class="form-group">
                     <label>Họ và tên</label>
-                    <input type="text" class="form-control" name="name" placeholder="Nhập họ và tên">
+                    <input type="text" class="form-control" name="name" placeholder="Nhập họ và tên" value="{{ cong_dan.name }}">
+                    <input type="hidden" name="congdan_id" value="{{ cong_dan.id }}">
                   </div>
                   <div class="form-group">
                     <label>Số chứng minh nhân dân/căn cước công dân</label>
-                    <input type="number" class="form-control" name="identity_id" placeholder="Nhập CMND/CCCD" maxlength="12">
+                    <input type="number" class="form-control" name="identity_id" placeholder="Nhập CMND/CCCD" maxlength="12" value="{{ cong_dan.identity_id }}">
                   </div>
                   <div class="form-group">
                     <label>Ngày sinh</label>
-                    <input type="date" class="form-control" name="birth_date">
+                    <input type="date" class="form-control" name="birth_date" value="{{ cong_dan.birth_date }}">
                   </div>
                   <div class="form-group">
                     <label>Giới tính</label>
@@ -38,27 +38,27 @@
                   </div>
                   <div class="form-group">
                     <label>Quê quán (format: xã/phường , huyện/quận , tỉnh/thành phố)</label>
-                    <input type="text" class="form-control" name="home_town" placeholder="Nhập quê quán">
+                    <input type="text" class="form-control" name="home_town" placeholder="Nhập quê quán" value="{{ cong_dan.home_town }}">
                   </div>
                   <div class="form-group">
                     <label>Địa chỉ thường trú</label>
-                    <input type="text" class="form-control" name="permanent_address" placeholder="Nhập địa chỉ thường trú của công dân">
+                    <input type="text" class="form-control" name="permanent_address" placeholder="Nhập địa chỉ thường trú của công dân" value="{{ cong_dan.permanent_address }}">
                   </div>
                   <div class="form-group">
                     <label>Địa chỉ tạm trú</label>
-                    <input type="text" class="form-control" name="temporary_address" placeholder="Nhập địa chỉ tạm trú của công dân">
+                    <input type="text" class="form-control" name="temporary_address" placeholder="Nhập địa chỉ tạm trú của công dân" value="{{ cong_dan.temporary_address }}">
                   </div>
                   <div class="form-group">
                     <label>Tôn giáo</label>
-                    <input type="text" class="form-control" name="religion" placeholder="Nhập tôn giáo của công dân">
+                    <input type="text" class="form-control" name="religion" placeholder="Nhập tôn giáo của công dân" value="{{ cong_dan.religion }}">
                   </div>
                   <div class="form-group">
                     <label>Trình độ học vấn</label>
-                    <input type="text" class="form-control" name="educational_level" placeholder="Nhập trình độ học vấn của công dân">
+                    <input type="text" class="form-control" name="educational_level" placeholder="Nhập trình độ học vấn của công dân" value="{{ cong_dan.educational_level }}">
                   </div>
                   <div class="form-group">
                     <label>Nghề nghiệp</label>
-                    <input type="text" class="form-control" name="job" placeholder="Nhập nghề nghiệp của công dân">
+                    <input type="text" class="form-control" name="job" placeholder="Nhập nghề nghiệp của công dân" value="{{ cong_dan.job }}">
                   </div>
                   {% if messages %}
                    <div class="form-group">

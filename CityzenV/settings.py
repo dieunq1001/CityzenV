@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'CityzenV_app.apps.CityzenvAppConfig',
-
+    'debug_permissions'
 ]
 
 MIDDLEWARE = [

@@ -38,3 +38,5 @@ def add_cong_dan_save(request):
         except:
             messages.error(request, "Thêm công dân thất bại")
             return HttpResponseRedirect(reverse("b2_add_cong_dan"))
+
+

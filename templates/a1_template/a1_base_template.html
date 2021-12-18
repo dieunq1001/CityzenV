@@ -87,7 +87,15 @@
         <!-- /.content-header -->
 
         <!-- Main content -->
-        {% block main_content %} {% endblock main_content %}
+        <section class="content">
+            <div class="container-fluid">
+                <h2>Số người dân ở thời điểm hiện tại: {{ congdan_data }}</h2>
+                <h2>Số cán bộ ở thời điểm hiện tại: {{ canbo_data }}</h2>
+                <h2>Số tỉnh/thành phố đã hoàn thành: </h2>
+                <h2>Số huyện/quận đã hoàn thành: </h2>
+                <h2>Số xã/phường đã hoàn thành: </h2>
+            </div><!-- /.container-fluid -->
+        </section>
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->

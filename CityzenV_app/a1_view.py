@@ -7,7 +7,13 @@ from CityzenV_app.models import CustomUser, CongDan
 
 
 def a1_home(request):
-    return render(request, 'a1_template/a1_base_template.html')
+    congdan_id = CongDan.objects.latest('id').id
+    canbo_id = CustomUser.objects.latest('id').id
+    data = {
+        "congdan_data": [congdan_id],
+        "canbo_data": [canbo_id],
+    }
+    return render(request, 'a1_template/a1_base_template.html', data)
 
 
 def add_a2(request):

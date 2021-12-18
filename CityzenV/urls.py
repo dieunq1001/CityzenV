@@ -22,6 +22,7 @@ from CityzenV_app import views, admin_view, a1_view, a2_view, a3_view, b1_view, 
 
 urlpatterns = [
     path('', views.ShowLoginPage, name='show_login'),
+    path('admin/', admin.site.urls),
     path('doLogin', views.DoLogin, name='do_login'),
     path('doLogout', views.DoLogOut, name='do_logout'),
 
@@ -55,6 +56,8 @@ urlpatterns = [
     path('b1_add_cong_dan', b1_view.b1_add_cong_dan, name='b1_add_cong_dan'),
     path('b1_add_cong_dan_save', b1_view.b1_add_cong_dan_save, name='b1_add_cong_dan_save'),
     path('b1_manage_cong_dan', b1_view.b1_manage_cong_dan, name='b1_manage_cong_dan'),
+    path('b1_edit_cong_dan/<str:congdan_id>', b1_view.b1_edit_cong_dan, name='b1_edit_cong_dan'),
+    path('b1_edit_cong_dan_save', b1_view.b1_edit_cong_dan_save, name='b1_edit_cong_dan_save'),
 
     #b2
     path('b2_home', b2_view.b2_home, name='b2_home'),

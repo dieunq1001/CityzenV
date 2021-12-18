@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.contrib.auth.models import Permission
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
@@ -70,3 +71,45 @@ def b1_manage_cong_dan(request):
     current_user = request.user
     cong_dans = CongDan.objects.filter(home_town__contains=current_user.b1.home_town)
     return render(request, 'b1_template/b1_manage_cong_dan_template.html', {"cong_dans": cong_dans})
+
+
+def b1_edit_cong_dan(request, congdan_id):
+    cong_dan = CongDan.objects.get(id=congdan_id)
+    return render(request, 'b1_template/b1_edit_cong_dan_template.html', {"cong_dan": cong_dan})
+
+
+def b1_edit_cong_dan_save(request):
+    if request.method != "POST":
+        HttpResponse("Phương thức không hợp lệ")
+    else:
+        congdan_id = request.POST.get("congdan_id")
+        name = request.POST.get("name")
+        identity_id = request.POST.get("identity_id")
+        birth_date = request.POST.get("birth_date")
+        gender = request.POST.get("gender")
+        home_town = request.POST.get("home_town")
+        permanent_address = request.POST.get("permanent_address")
+        temporary_address = request.POST.get("temporary_address")
+        religion = request.POST.get("religion")
+        educational_level = request.POST.get("educational_level")
+        job = request.POST.get("job")
+
+        try:
+            congdan = CongDan.objects.get(id=congdan_id)
+            congdan.name = name
+            congdan.identity_id = identity_id
+            congdan.birth_date = birth_date
+            congdan.gender = gender
+            congdan.home_town = home_town
+            congdan.permanent_address = permanent_address
+            congdan.temporary_address = temporary_address
+            congdan.religion = religion
+            congdan.educational_level = educational_level
+            congdan.job = job
+            congdan.save()
+            messages.success(request, "Thay đổi công dân thành công")
+            return HttpResponseRedirect(reverse("b1_edit_cong_dan", kwargs={"congdan_id": congdan_id}))
+        except:
+            messages.error(request, "Thay đổi công dân thất bại")
+            return HttpResponseRedirect(reverse("b1_edit_cong_dan", kwargs={"congdan_id": congdan_id}))
+
