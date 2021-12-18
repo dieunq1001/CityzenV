@@ -20,17 +20,17 @@ def DoLogin(request):
         if user is not None:
             login(request, user)
             if user.user_type == "1":
-                return HttpResponseRedirect("/admin_home")
+                return HttpResponseRedirect(reverse("admin_home"))
             elif user.user_type == "2":
-                return HttpResponseRedirect("/a1_home")
+                return HttpResponseRedirect(reverse("a1_home"))
             elif user.user_type == "3":
-                return HttpResponseRedirect("/a2_home")
+                return HttpResponseRedirect(reverse("a2_home"))
             elif user.user_type == "4":
-                return HttpResponseRedirect("/a3_home")
+                return HttpResponseRedirect(reverse("a3_home"))
             elif user.user_type == "5":
-                return HttpResponseRedirect("/b1_home")
+                return HttpResponseRedirect(reverse("b1_home"))
             else:
-                return HttpResponseRedirect("/b2_home")
+                return HttpResponseRedirect(reverse("b2_home"))
         else:
             messages.error(request, "Tài khoản/mật khẩu không chính xác")
             return HttpResponseRedirect("/")

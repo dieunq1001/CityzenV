@@ -47,6 +47,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'CityzenV_app.login_check_middleware.login_check_middleware',
 ]
 
 ROOT_URLCONF = 'CityzenV.urls'

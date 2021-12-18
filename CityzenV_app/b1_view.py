@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
+from django.urls import reverse
 
 from CityzenV_app.models import CustomUser, CongDan
 
@@ -29,10 +30,10 @@ def add_b2_save(request):
             user.b2.home_town = home_town
             user.save()
             messages.success(request, "Thêm B2 thành công")
-            return HttpResponseRedirect("/add_b2")
+            return HttpResponseRedirect(reverse("b1_add_b2"))
         except:
             messages.error(request, "Thêm B1 thất bại")
-            return HttpResponseRedirect("/add_b2")
+            return HttpResponseRedirect(reverse("b1_add_b2"))
 
 
 def b1_add_cong_dan(request):
@@ -59,7 +60,13 @@ def b1_add_cong_dan_save(request):
                                educational_level=educational_level, job=job)
             cong_dan.save()
             messages.success(request, "Thêm công dân thành công")
-            return HttpResponseRedirect("/b1_add_cong_dan")
+            return HttpResponseRedirect(reverse("b1_add_cong_dan"))
         except:
             messages.error(request, "Thêm công dân thất bại")
-            return HttpResponseRedirect("/b1_add_cong_dan")
+            return HttpResponseRedirect(reverse("b1_add_cong_dan"))
+
+
+def b1_manage_cong_dan(request):
+    current_user = request.user
+    cong_dans = CongDan.objects.filter(home_town__contains=current_user.b1.home_town)
+    return render(request, 'b1_template/b1_manage_cong_dan_template.html', {"cong_dans": cong_dans})

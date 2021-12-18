@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
+from django.urls import reverse
 
 from CityzenV_app.models import CustomUser
 
@@ -28,9 +29,9 @@ def add_a1_save(request):
             user.a1.home_town = home_town
             user.save()
             messages.success(request, "Thêm A1 thành công")
-            return HttpResponseRedirect("/add_a1")
+            return HttpResponseRedirect(reverse("admin_add_a1"))
         except:
             messages.error(request, "Thêm A1 thất bại")
-            return HttpResponseRedirect("/add_a1")
+            return HttpResponseRedirect(reverse("admin_add_a1"))
 
 

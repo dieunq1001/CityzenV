@@ -1,8 +1,9 @@
 from django.contrib import messages
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
+from django.urls import reverse
 
-from CityzenV_app.models import CustomUser
+from CityzenV_app.models import CustomUser, CongDan
 
 
 def a3_home(request):
@@ -29,7 +30,13 @@ def add_b1_save(request):
             user.b1.home_town = home_town
             user.save()
             messages.success(request, "Thêm B1 thành công")
-            return HttpResponseRedirect("/add_b1")
+            return HttpResponseRedirect(reverse("a3_add_b1"))
         except:
             messages.error(request, "Thêm B1 thất bại")
-            return HttpResponseRedirect("/add_b1")
+            return HttpResponseRedirect(reverse("a3_add_b1"))
+
+
+def a3_manage_cong_dan(request):
+    current_user = request.user
+    cong_dans = CongDan.objects.filter(home_town__contains=current_user.a3.home_town)
+    return render(request, 'a3_template/a3_manage_cong_dan_template.html', {"cong_dans": cong_dans})

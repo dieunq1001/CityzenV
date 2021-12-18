@@ -24,14 +24,23 @@
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="/add_a3" class="nav-link">
+                    {% url 'a2_add_a3' as a2_add_a3 %}
+                    <a href="{{ a2_add_a3 }}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>
                             Thêm A3
                         </p>
                     </a>
                 </li>
-
+                <li class="nav-item">
+                    {% url 'a2_manage_cong_dan' as a2_manage_cong_dan %}
+                    <a href="{{ a2_manage_cong_dan }}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>
+                            Xem thông tin dân số
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

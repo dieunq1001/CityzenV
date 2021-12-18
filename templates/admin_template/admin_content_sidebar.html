@@ -24,7 +24,8 @@ admin_content_sidebar
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="/add_a1" class="nav-link">
+                    {% url 'admin_add_a1' as admin_add_a1 %}
+                    <a href="{{ admin_add_a1 }}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>
                             Thêm A1

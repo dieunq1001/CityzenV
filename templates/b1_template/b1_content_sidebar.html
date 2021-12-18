@@ -23,7 +23,8 @@
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="/add_b2" class="nav-link">
+                    {% url 'b1_add_b2' as b1_add_b2 %}
+                    <a href="{{ b1_add_b2 }}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>
                             Thêm B2
@@ -31,14 +32,23 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/b1_add_cong_dan" class="nav-link">
+                    {% url 'b1_add_cong_dan' as b1_add_cong_dan %}
+                    <a href="{{ b1_add_cong_dan }}" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>
                             Thêm thông tin công dân
                         </p>
                     </a>
                 </li>
-
+                <li class="nav-item">
+                    {% url 'b1_manage_cong_dan' as b1_manage_cong_dan %}
+                    <a href="{{ b1_manage_cong_dan }}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>
+                            Xem thông tin công dân
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
