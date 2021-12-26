@@ -56,7 +56,6 @@
         <!-- SEARCH FORM -->
 
         <!-- Right navbar links -->
-        {% include 'a1_template/a1_content_notification.html' %}
     </nav>
     <!-- /.navbar -->
 
@@ -70,12 +69,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">
-                            {% block page_title %}
-
-                            {% endblock page_title %}
-                        </h1>
-                    </div><!-- /.col -->
+                    </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{% url 'a1_home' %}">Trang chủ</a></li>
@@ -87,19 +81,9 @@
         <!-- /.content-header -->
 
         <!-- Main content -->
-        <section class="content">
-            <div class="container-fluid">
-                <h2>Số người dân ở thời điểm hiện tại: {{ congdan_data }}</h2>
-                <h2>Số cán bộ ở thời điểm hiện tại: {{ canbo_data }}</h2>
-                <h2>Số tỉnh/thành phố đã hoàn thành: </h2>
-                <h2>Số huyện/quận đã hoàn thành: </h2>
-                <h2>Số xã/phường đã hoàn thành: </h2>
-            </div><!-- /.container-fluid -->
-        </section>
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
-    {% include 'a1_template/a1_content_footer.html' %}
 
 </div>
 <!-- ./wrapper -->
